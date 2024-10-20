@@ -1,0 +1,12 @@
+##add changes in local repository
+git init
+git add. ##for adding all files
+1.git add README.md
+2.git commit -m "Commit msg"
+directly combine these to as## 3.git commit -a -m "msg" 
+git branch -M main #changing branch to main
+##for remote repository to local -merging
+git remote add origin SSh link eg:git@github.com:susik17/ml_projects.git
+git pull origin main --rebase
+##push changes from local to remote
+git push -u origin main

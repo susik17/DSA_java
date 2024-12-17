@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Main {
+public class Insertion {
     static void insertion_sort(int[] arr, int n) {
         for (int i = 1; i < n; i++) {
             int j = i;

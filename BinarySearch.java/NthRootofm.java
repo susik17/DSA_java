@@ -86,3 +86,7 @@ class NthRootofm{
     }
 
 }
+/*
+ ip:3 64
+ op:4
+ */

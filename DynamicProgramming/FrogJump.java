@@ -23,7 +23,7 @@ class DP {
         if(i==0){ return 0;}
         if(i==1){return Math.abs(heights[0]-heights[1]);}
         int n=heights.length;
-        int[] dp = new int[n+1];
+        int[] dp = new int[n];
         dp[0]=0;
         dp[1]=Math.abs(heights[0]-heights[1]);
         for(int j=2;j<=i;j++){
@@ -69,7 +69,7 @@ class DP {
             heights[i]=sc.nextInt();
         }
         //int Recursion_op=FrogJump(n-1,heights);
-        int[] dp =  new int[n+1];
+        int[] dp =  new int[n];
         for (int i=0;i<=n;i++){
             dp[i]=-1;
         }

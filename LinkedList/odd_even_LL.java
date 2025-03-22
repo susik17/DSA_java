@@ -1,4 +1,3 @@
-import java.util.*;
 
 /*
 class Node {
@@ -12,37 +11,60 @@ class Node {
 }
 */
 
-public class Solution {
-    public static Node evenAndOdd(Node head) {
-        //Write your code here...
-        Node cur = head;
-        Node prev = null;
-        Vector<Integer> v = new Vector<>();
-        int count = 0;
-        while (cur != null) {
-            if (count % 2 == 0) {
-                v.add(cur.data);
-                if (prev != null) {
-                    prev.next = cur.next; // Skip the even-indexed nodes
-                }
-            } else {
-                prev = cur; // Only update prev for odd-indexed nodes
-            }
-            cur = cur.next;
-            count++;
+class Solution {
+    public static Node evenAndOdd(Node head){
+        Node odd,even,odd_head;
+        even = head;
+        odd_head = head.next;
+        odd = head.next;
+        while(odd!=null && odd.next!=null){
+            even.next = even.next.next;
+            odd.next = odd.next.next;
+            even = even.next;
+            odd = odd.next;
+            
         }
-        cur = head;
-        while (cur != null && cur.next != null) {
-            cur = cur.next;
-        }
-        for (int i = 0; i < v.size(); i++) {
-            Node n = new Node(v.get(i));
-            cur.next = n;
-            cur = cur.next;
-        }
-
+        even.next = odd_head;
         return head;
-    
     }
+    /*
+    bruteforce 
+    public static Node evenAndOdd(Node head) {
+        Node temp;
+        temp = head;
+        List<Integer> v = new ArrayList<>();
+        //Even Indexes
+        while(temp!=null && temp.next!=null){
+            v.add(temp.data);
+            temp = temp.next.next;
+        }
+        if(temp!=null){
+            v.add(temp.data);
+        }
+        //odd Indexes
+        temp = head.next;
+        while(temp!=null && temp.next!=null){
+            v.add(temp.data);
+            temp = temp.next.next;
+        }
+        if(temp!=null){
+            v.add(temp.data);
+        }
+        //updation on LL
+        temp = head;
+        for (int i = 0; i < v.size(); i++) {
+            temp.data = v.get(i);
+            temp = temp.next;
+        }
+        return head;
+    }
+    */
     
 }
+/*
+ip:
+6
+5 8 7 2 9 3
+op:
+5 7 9 8 2 3 
+*/

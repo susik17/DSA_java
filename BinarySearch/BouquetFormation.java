@@ -18,35 +18,25 @@ class Bouquet {
             return bouquet;
     }
      static int BouquetFormation(int[] arr,int n,int k,int m){
-        if(n < m*k){ return -1;}
-        /*int minValue=arr[0];
-        int maxValue=arr[0];
-        for(int i=0;i<=n-1;i++){
-            if(arr[i]>maxValue){
-                maxValue=arr[i];
-            }
-            if(arr[i]<minValue){
-                minValue=arr[i];
-            }
-            
+        //use long to avoid overflow
+        if(n < (long)m*k){ return -1;}
+        int minValue = Integer.MAX_VALUE, maxValue = Integer.MIN_VALUE;
+        for (int val : arr) {
+            minValue = Math.min(minValue, val);
+            maxValue = Math.max(maxValue, val);
         }
-        */
-        int minValue=Arrays.stream(arr).min().getAsInt();
-        int maxValue=Arrays.stream(arr).max().getAsInt();
         int low=minValue;
         int high=maxValue;
-        int ans=high;
         while(low<=high){
-            int mid=(low+high)/2;
+            int mid=(low+(high-low))/2; //changes made here 
             if(no_of_bouquets(arr,n,k,mid)>=m){
-                ans=mid;
                 high=mid-1;
             }
             else{
                 low=mid+1;
             }
         }
-        return ans;
+        return low;
          
      }
     /*

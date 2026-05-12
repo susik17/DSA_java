@@ -1,3 +1,4 @@
+package Medium;
 
 // "static void main" must be defined in a public class.
 class Main {

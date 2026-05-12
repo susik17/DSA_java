@@ -1,0 +1,104 @@
+SUBSEQUENCE GENERATION PATTERN => Main Idea => Generate valid only 
+
+Used in:
+
+Generate Binary Strings Without Consecutive 1s
+Generate Parentheses
+Letter Combinations of Phone Number
+
+
+Core Idea
+Build answer character by character.
+
+Example: 1.Binary Strings Without Consecutive 1s
+
+n=3
+
+Allowed:
+
+000
+001
+010
+100
+101
+
+Tree:
+
+                        ""
+                   /          \
+                 "0"          "1"
+               /    \           \
+            "00"   "01"        "10"
+            / \      |        /    \
+       "000""001" "010"   "100"  "101"
+
+Why no "11"?
+
+Because:
+
+if previous == 1
+    cannot place 1
+
+This is called:
+constraint-based recursion
+
+2.Generate Parentheses
+
+n=2
+
+Rules:
+
+open < n => add open "("
+close < open => add close
+
+Tree:
+n=2
+                    ""   
+                   "("     
+                
+               /        \   
+             "(("        "()"
+              |          |
+            "(())"      "()()"
+
+Core idea:
+valid state only
+we never generate invalid strings.
+
+3.Letter Combinations of Phone Number
+
+Digits:
+
+23
+
+Mapping:
+
+2 -> abc
+3 -> def
+
+Tree:
+
+                    ""
+           /        |        \
+          a         b         c
+       / | \     / | \     / | \
+      d  e f    d e f     d e f
+
+This pattern is:
+
+for each choice:
+    append
+    recurse
+    remove
+
+
+Helper Function:
+
+Whenever recursion function needs:
+index
+temp/current
+answer/result
+
+Most of the time:
+
+✅ helper function is cleaner.

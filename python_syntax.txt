@@ -1,0 +1,105 @@
+
+
+
+
+
+## -----------------------------Array as input 
+# Takes space-separated numbers like: 1 2 3 4
+arr = list(map(int, input("Enter numbers separated by space: ").split()))
+print(arr)
+
+
+
+##-----------------Uset tfo initialize exactly 200 elements 
+freq = [0] * 200  # Initialize 200 zeros 
+
+eg:Counting frequencices 
+data = [10, 5, 10, 20, 5, 10]
+freq = [0] * 200  # Initialize 200 zeros
+
+# Count frequencies
+for number in data:
+    if 0 <= number < 200:
+        freq[number] += 1
+
+print(freq[10])  # Output: 3
+print(freq[5])   # Output: 2
+print(freq[0])   # Output: 0
+
+#-----------------------# Convert string to list of characters
+    s = list(st)   => muttable s[i] = 'a'
+
+#---------------------
+char_code = ord(s[i])   # Converts 'a' to 97
+freq[char_code] += 1    # Increments the count at index 97
+
+print(chr(97))  # Outputs: 'a'
+ # Incrementing each character's frequency
+            freq[ord(st[i]) - ord('a')] += 1  
+
+
+#--------------from collections import OrderedDict
+
+# Create an OrderedDict
+od = OrderedDict()
+od['a'] = 1
+od['b'] = 2
+od['c'] = 3
+
+# Move 'a' to the very end
+od.move_to_end('a')
+print(od)  # Outputs: OrderedDict([('b', 2), ('c', 3), ('a', 1)])
+
+# Pop the very first item (FIFO)
+first_item = od.popitem(last=False)
+print(first_item)  # Outputs: ('b', 2)
+
+
+#--------------------DICTIONARY
+1. Creation and Initializationpython# Empty dictionary
+d = {}  
+
+# Loop through both keys and values (Most common)
+for key, val in user.items():
+    print(key, "is", val)
+
+# Key-value pairs
+user = {"name": "Alice", "age": 25}  
+
+# Using dict() constructor
+user = dict(name="Alice", age=25)  
+Use code with caution.2. Accessing Elementspython# Direct access (Crashes if key does not exist)
+name = user["name"]  
+
+# Safe access (Returns None if key is missing)
+age = user.get("age")  
+
+# Safe access with a default fallback value
+role = user.get("role", "Guest")  
+Use code with caution.3. Adding and Modifyingpython# Add new or overwrite existing key
+user["email"] = "alice@email.com"  
+
+# Update multiple items at once
+user.update({"age": 26, "city": "Delhi"})  
+Use code with caution.4. Deleting Elementspython# Removes key and returns its value
+age = user.pop("age")  
+
+# Delete key directly (Crashes if key is missing)
+del user["name"]  
+
+# Clear everything
+user.clear()  
+Use code with caution.5. Checking for Keyspython# Check if key exists (Fast O(1) operation)
+if "name" in user:
+    print("Found!")
+Use code with caution.6. Looping (Iteration)python# Loop through keys only
+for key in user:
+    print(key)
+
+# Loop through values only
+for val in user.values():
+    print(val)
+
+Use code with caution.7. Dictionary Comprehension (Quick Creation)python# Create a dictionary from a loop in one line
+squares = {x: x**2 for x in range(1, 5)}
+# Output: {1: 1, 2: 4, 3: 9, 4: 16}

@@ -1,3 +1,7 @@
 1.increment/decerement => l-=1,i+=1
 2.list sort => arr.sort()
-3.
+3.for remove all except alpahumeric from string 
+use regex 
+=> import re
+s ="hello : 123"
+new_s= re.sub(r'[^a-zA-Z0-9]','',s)

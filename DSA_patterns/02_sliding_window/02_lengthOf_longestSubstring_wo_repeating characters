@@ -1,0 +1,126 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        # optimal => apply sliding window => dupliacte found -> reduce window size
+        seen = {}
+        left,max_length = 0,0
+        for right,ch in enumerate(s):
+            #window shrink => move pointer next to the dupliacte element
+            #seen[ch]>=left => to avoid backward movement of left pointer
+
+            if ch in seen and seen[ch]>=left:
+                left = seen[ch]+1
+            seen[ch] = right
+            max_length = max(max_length,right-left+1)
+        return max_length
+            
+
+
+
+
+
+        '''
+        # approach 1st => Each index → start point → extend substring → set use -> duplicate detect → length update.
+        # string => s="" => 0
+        max_length = 0
+        for i in range(len(s)):
+            length = 0
+            myset = set()
+            for j in range(i,len(s)):
+                if s[j] in myset:
+                    break
+                myset.add(s[j])
+                max_length = max(max_length,len(myset))
+                
+        return max_length
+        '''
+'''
+# 3. Longest Substring Without Repeating Characters
+
+### Question
+
+Given a string `s`, find the length of the **longest substring without repeating characters**.
+
+Example:
+
+```text
+s = "abcabcbb"
+Answer = 3
+```
+
+### 1. Brute Force — Set
+
+**Each index as start → grow substring → duplicate found → break → update max**
+
+```python
+max_length = 0
+
+for i in range(len(s)):
+    myset = set()
+
+    for j in range(i, len(s)):
+        if s[j] in myset:
+            break
+
+        myset.add(s[j])
+        max_length = max(max_length, len(myset))
+
+return max_length
+```
+
+**TC:** O(n²)
+**SC:** O(n)
+
+---
+
+### 2. Sliding Window — Set
+
+**Grow right → duplicate found → shrink until duplicate disappears → update max**
+
+```python
+shrink = 0
+max_length = 0
+myset = set()
+
+for grow in range(len(s)):
+    while s[grow] in myset:
+        myset.remove(s[shrink])
+        shrink += 1
+
+    myset.add(s[grow])
+    max_length = max(max_length, grow - shrink + 1)
+
+return max_length
+```
+
+**TC:** O(n)
+**SC:** O(n)
+
+---
+
+### 3. Sliding Window — HashMap ⭐ Optimal
+
+**Store last index → duplicate found → jump `left` → update max**
+
+```python
+last_seen = {}
+left = best = 0
+
+for right, ch in enumerate(s):
+    if ch in last_seen and last_seen[ch] >= left:
+        left = last_seen[ch] + 1
+
+    last_seen[ch] = right
+    best = max(best, right - left + 1)
+
+return best
+```
+
+**TC:** O(n)
+**SC:** O(n)
+
+### Pattern
+
+**Longest substring + no duplicates → Sliding Window**
+
+**Set → shrink step-by-step | HashMap → jump directly**
+'''

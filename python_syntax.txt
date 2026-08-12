@@ -1,11 +1,37 @@
 1.increment/decerement => l-=1,i+=1
+
 2.list sort => arr.sort()
+
 3.for remove all except alpahumeric from string 
 use regex
 => import re
 s ="hello : 123"
 new_s= re.sub(r'[^a-zA-Z0-9]','',s)
+
 4.array => sum -> usi g slicing
 arr =[100,200,300,400]
 array_sum = sum(arr[strat_index:end_index])
 eg: sum(arr[0:2])=> 0,1 index sum => 300
+
+5.List Comprehension — Short Note
+
+Purpose: Loop + condition- one line
+
+[value for item in list]
+
+With condition:
+
+[value for item in list if condition]
+
+Example:
+
+[x for x in nums if x % 2 == 0]
+
+→ nums- even numbers only
+
+Subsets example:
+
+[nums[i] for i in range(n) if mask & (1 << i)]
+
+Remember:
+[what to add → for → what to loop → if → condition]

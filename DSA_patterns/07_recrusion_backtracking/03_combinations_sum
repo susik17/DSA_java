@@ -1,0 +1,21 @@
+def combination_sum(candidates, target):
+    candidates.sort()
+    res, path = [], []
+
+    def backtrack(start, remaining):
+        if remaining == 0:
+            res.append(path[:])
+            return
+
+        for i in range(start, len(candidates)):
+            if candidates[i] > remaining:
+                break
+            #choose 
+            path.append(candidates[i])
+            #Explore => Note: use i, not i+1 for include same elements reuse 
+            backtrack(i, remaining - candidates[i])
+            #undo 
+            path.pop()
+
+    backtrack(0, target)
+    return res

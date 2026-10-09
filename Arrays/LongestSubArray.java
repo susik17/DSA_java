@@ -38,7 +38,7 @@ class LongestSubArray{
         return max;
     }
     /*
-    //Better-both +ve and -ve numbers
+    //Better-both => Prefix_sum =>  +ve and -ve numbers
     static int LongestSubArray(int[]arr,int k){
         int n=arr.length;
         int max=0;
